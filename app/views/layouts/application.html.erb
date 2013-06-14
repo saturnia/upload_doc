@@ -11,6 +11,16 @@
 		<%= render 'layouts/header' %>
 		
 		<div class="container">
+			
+			<% if user_signed_in? %>
+				Signed in as <%= current_user.name %>. Not you?
+				<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+			<% end %>
+
+			<% flash.each do |name, msg| %>
+				<%= content_tag :div, msg, :id => "flash_#{name}" %>
+			<% end %>
+
 			<%= yield %>
 			<%= render 'layouts/footer' %>
 		</div>
