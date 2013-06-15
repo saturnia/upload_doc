@@ -6,21 +6,17 @@ UploadDoc::Application.routes.draw do
 
   resources :dashboard
 
-  #root to: 'devise/sessions#new'
+  
 
   #devise_scope :user do
   #  root to: "devise/sessions#new"
   #end
   
+  #root to: 'sessions#index'
+
   #root to: "devise/sessions#new"
 
-  #devise_scope :user do
-  #  get "sign_in", :to => "devise/sessions#new"
-  #end
   root to: 'static_pages#home'
-
-  #match '/signup', to: 'users#new'
-  #match '/createuser', to: 'users#new'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
