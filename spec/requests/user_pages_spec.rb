@@ -6,9 +6,10 @@ describe "UserPages" do
 
 	describe "profile page" do
 		let(:user) { FactoryGirl.create(:user) }
-		before { visit dashboard_index_path }
+		before { sign_in user }
+		before { visit dashboard_index_path(user) }
 
-		it { should have_selector('h2', 	text: user.name) }
+		it { should have_selector('h2', text: user.name) }
 		it { should have_selector('title', 	text: "UploadDoc") }
 
 	end
@@ -36,6 +37,42 @@ describe "UserPages" do
 				expect { click_button submit }.to change(User, :count).by(1)
 			end
 		end
+	end
+
+	describe "edit" do
+		let(:user) { FactoryGirl.create(:user) }
+		before { sign_in user }
+		before { visit edit_user_registration_path(user) }
+
+		describe "page" do
+			it { should have_selector('h2', text: "Edit User") }
+			it { should have_selector('h3', text: "Cancel my account") }
+		end
+
+		describe "with invalid information" do
+			before { click_button "Update" }
+
+			it { should have_content('error') }
+		end
+
+		describe "with valid information" do
+			let(:new_name) 	{ "New Name" }
+			let(:new_email) { "new@example.com" }
+			before do
+				fill_in "Name", 					with: new_name
+				fill_in "Email", 					with: new_email
+				fill_in "Password", 				with: user.password
+				fill_in "Password confirmation",	with: user.password
+				fill_in "Current password",			with: user.password
+				click_button "Update"
+			end
+
+			it { should have_selector('h2', text: new_name) }	
+			it { should have_link('Sign out', href: destroy_user_session_path) }
+
+			specify { user.reload.name.should  == new_name }
+      		specify { user.reload.email.should == new_email }
+      	end
 	end
 end
 

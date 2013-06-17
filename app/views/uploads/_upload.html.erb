@@ -1,0 +1,7 @@
+<li>
+	<span class="file_name"><%= link_to upload.document_file_name, upload.document.url, :target => "_blank" %></span>
+	<span class="timestamp">
+	 	- Posted <%= time_ago_in_words(upload.created_at) %> ago by <%= @user.name %>.
+
+	</span>
+</li>

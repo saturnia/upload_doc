@@ -1,0 +1,10 @@
+<% if @user.uploads.any? %>
+			<h3>Documents (<%= @user.uploads.count %></h3>
+			<ol class="documents">
+				<%= render @uploads %>
+			</ol>
+		<% end %>
+		
+<% form_for @uploads, :html => { :multipart => true } do |f| %>
+			<%= f.file_field :documents %>
+		<% end %>

@@ -1,12 +1,22 @@
 UploadDoc::Application.routes.draw do
+  get "uploads/new"
 
+  get "upload/new"
+
+  get "upload/destroy"
+
+  get "uploads/create"
+
+  get "uploads/destroy"
+
+  get 'users/show'
   get "dashboard/index"
+  get 'dashboard/show'
 
   devise_for :users
-
+  #devise_for :uploads
   resources :dashboard
-
-  
+  resources :uploads, only: [:create, :destroy]
 
   #devise_scope :user do
   #  root to: "devise/sessions#new"

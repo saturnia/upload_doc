@@ -28,6 +28,12 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me#, :encrypted_password
   # attr_accessible :title, :body
+  has_many :uploads, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 50 }
+
+  def feed
+    #uploads
+    Upload.where("user_id = ?", id)
+  end
 end

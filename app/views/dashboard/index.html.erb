@@ -1,24 +1,12 @@
 <h2>Welcome to you dashboard</h2> 
 <h2><%= current_user.name %></h2>
-
 <div class="row">
-	<div class="ruta span4">
-		<h2>Senaste dokument</h2>
-		<p>(Dina) Senaste Dokument</p>
+	<div class="span6 offset3">
+		<% if @user.uploads.any? %>
+			<p>Documents (<%= @user.uploads.count %>)</p>
+		<% end %>
+		<%= render 'layouts/form' %>
+		<%= render 'shared/feed' %>
 	</div>
-	<div class="ruta span4">
-		<h2>Användare</h2>
-		<p>edit profiles, delete profiles</p>
-	</div>
-
-	<div class="ruta span4">
-		<h2>Meny</h2>
-		<p>Val om att ändra lösenord etc.</p>
-	</div>
-</div>
-<div class="row">
-	<div class="ruta span12">
-		<h2>Skapa ny användare</h2>
-		<p>Skapa honom</p>
-	</div>
+	
 </div>
