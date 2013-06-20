@@ -1,21 +1,29 @@
 UploadDoc::Application.routes.draw do
-  get "uploads/new"
+  #get "uploads/new"
 
-  get "upload/new"
+  #get "upload/new"
 
-  get "upload/destroy"
-
+  #get "upload/destroy"
+  get "users/create" 
+  get "users/edit"
   get "uploads/create"
 
   get "uploads/destroy"
 
   get 'users/show'
   get "dashboard/index"
-  get 'dashboard/show'
+  #get 'dashboard/show'
 
-  devise_for :users
+  get 'tags/:tag', to: 'dashboard#show', as: :tag
+  devise_for :users, :path_prefix => 'my'
+  resources :users
+
+
+
+
   #devise_for :uploads
-  resources :dashboard
+
+  resources :dashboard#, only: [:show, :index]
   resources :uploads, only: [:create, :destroy]
 
   #devise_scope :user do

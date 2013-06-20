@@ -1,5 +1,7 @@
 <% if @feed_items.any? %>
+	<p> Documents (<%= @feed_items.count %>) </p>
 	<ol class="uploads">
+
 		<%= render partial: 'shared/feed_item', collection: @feed_items %>
 	</ol>
 <% end %>

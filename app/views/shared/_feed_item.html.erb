@@ -1,6 +1,6 @@
 <li id="<%= feed_item.id %>">
   
-  <span class="content"><%= link_to feed_item.document_file_name, feed_item.document.url %>
+  <span class="feed_item"><%= link_to feed_item.document_file_name, feed_item.document.url, :target => "_blank"  %>
   </span>
   <span class="timestamp">
     - Posted <%= time_ago_in_words(feed_item.created_at) %> ago.
@@ -8,4 +8,10 @@
   <span class="user">
     by <%= feed_item.user.name %>
   </span>
+  
+  <p>
+  	Tags: <%= raw feed_item.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+  </p>
+  
+  <%= link_to "delete", feed_item, method: :delete, data: { confirm: "You sure?" }, title: feed_item.document_file_name %>
 </li>
