@@ -41,6 +41,13 @@
 
 	</div>
 </div>
-
-
 <% end %>
+
+<div>
+<p>Search field: </p>
+<%= form_for @uploads do |search| %>
+	<%= search.label :tag_list, "Tags (seperated by commas)" %>
+	<%= search.search_field :tag_list %>
+	<%= search.submit "Search" %>
+<% end %>
+</div>

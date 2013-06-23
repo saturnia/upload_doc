@@ -2,11 +2,11 @@ class UsersController < ApplicationController
 	skip_before_filter :require_no_authentication
 	
 	def show
-		#@user = User.find(params[:id])
+		@user = User.find(params[:id])
 	end
 	
 	def new
-		#@user = User.new(params[:user])
+		@user = User.new(params[:user])
 	end
 
 	def create

@@ -35,7 +35,7 @@ UploadDoc::Application.routes.draw do
   #root to: "devise/sessions#new"
 
   root to: 'static_pages#home'
-
+  #root to: 'my/users#login'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
