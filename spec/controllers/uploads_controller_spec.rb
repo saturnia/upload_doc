@@ -1,7 +1,9 @@
 require 'spec_helper'
 
-describe UploadsController do
 
+describe UploadsController do
+  let(:user) { FactoryGirl.create(:user) }
+  before { sign_in :user }
   describe "GET 'create'" do
     it "returns http success" do
       get 'create'

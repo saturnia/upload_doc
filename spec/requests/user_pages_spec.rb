@@ -4,17 +4,29 @@ describe "UserPages" do
 
 	subject { page }
 
-	describe "profile page" do
+	describe "profile pagefor role = user" do
 		let(:user) { FactoryGirl.create(:user) }
 		before { sign_in user }
 		before { visit dashboard_index_path(user) }
 
 		it { should have_selector('h2', text: user.name) }
 		it { should have_selector('title', 	text: "UploadDoc") }
-
+		#it { should_not have_selector('h1', text: "All users") }
 	end
 
-	describe "sign_up" do
+	describe "profile page for role = 'admin'" do
+		let(:user) { FactoryGirl.create(:user) }
+		before { sign_in user }
+		before { visit dashboard_index_path(user) }
+
+		it { should have_selector('h2', text: user.name) }
+		it { should have_selector('title', text: "UploadDoc") }
+		it { should have_selector('h1', text: "All users") }
+		it { should have_link('Create new user', href: users_create_path) }
+	end
+
+
+ 	describe "sign_up" do
 		before { visit new_user_registration_path }
 
 		let(:submit) { "Sign up" }
@@ -73,6 +85,8 @@ describe "UserPages" do
 			specify { user.reload.name.should  == new_name }
       		specify { user.reload.email.should == new_email }
       	end
+
+
 	end
 end
 

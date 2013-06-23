@@ -9,16 +9,16 @@ class UploadsController < ApplicationController
       redirect_to root_url
     else
       @feed_items = []
-      render 'static_pages/home'
+      redirect_to root_url
+      flash[:notice] = "That was not a document, try again!"
+
     end
 
   end
 
   def destroy
     @user = current_user
-    if @user.role == "admin"
-      @upload = Upload.find(params[:id]).destroy
-      redirect_to root_url
-    end
+    @upload = Upload.find(params[:id]).destroy
+    redirect_to root_url
   end 
 end

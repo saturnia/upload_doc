@@ -10,7 +10,7 @@ class DashboardController < ApplicationController
 		# IF USER.ROLE == ADMIN 
 			@feedall_items = @user.feedall
 		# ELSE 
-		# @FEEDALL_ITEMS  = @USER.FEEDALL.WHERE(PROTECTED: == FALSE)
+		# @FEEDALL_ITEMS  = @USER.FEEDALL.WHERE(PROTECTED: == FALSE) OR @USER.FEEDALL.USER_ID == ID
 
 		@users = (current_user.blank? ? User.all : User.find(:all, :conditions => ["id != ?", current_user.id]))
 
@@ -25,9 +25,5 @@ class DashboardController < ApplicationController
 			@uploads = @user.uploads(params[:id])
 		end
 		#@feed_items = @user.feed.(params[:id])
-	end
-
-	def results
-	  
 	end
 end

@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
+  ROLES = %w[admin user]
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -34,6 +35,10 @@ class User < ActiveRecord::Base
 
   default_scope order: 'users.created_at DESC'
 
+  #has_and_belongs_to_many :roles
+  #def role?(role)
+  #  return !!self.roles.find_by_name(role.to_s.camlize)
+  #end
   def feed
     Upload.where("user_id = ?", id)
   end

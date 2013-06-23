@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 	end
 	
 	def new
+		authorize!
 		@user = User.new(params[:user])
 	end
 
@@ -17,7 +18,7 @@ class UsersController < ApplicationController
 			flash[:success] = "User Created"
 			redirect_to root_path
 		else
-			render 'new'
+			render 'static_pages/home'
 		end
 
 	end

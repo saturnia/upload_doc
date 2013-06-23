@@ -1,3 +1,4 @@
+
 require 'spec_helper'
 
 describe "Authentication" do
@@ -24,7 +25,7 @@ describe "Authentication" do
 				click_button "Sign in"
 			end
 
-			it { should have_selector('h2', text: "Martin Gyhagen") }
+			it { should have_selector('h2', text: "Example") }
 			it { should have_link('Sign out', href: destroy_user_session_path) }
 			it { should_not have_link('Sign in', href: new_user_session_path) }
 		end

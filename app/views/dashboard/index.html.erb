@@ -34,6 +34,7 @@
 		      <%= link_to user.name, user %>
 		      <%= link_to "edit", edit_user_path(user) %>
 		      <%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" }, title: user.name %>
+		      
 
 		    </li>
 		  <% end %>
@@ -42,12 +43,3 @@
 	</div>
 </div>
 <% end %>
-
-<div>
-<p>Search field: </p>
-<%= form_for @uploads do |search| %>
-	<%= search.label :tag_list, "Tags (seperated by commas)" %>
-	<%= search.search_field :tag_list %>
-	<%= search.submit "Search" %>
-<% end %>
-</div>
