@@ -4,9 +4,7 @@ class DashboardController < ApplicationController
 
 	def index
 		@user = current_user
-		#@uploads = @user.uploads.new
 		@uploads = @user.uploads.new
-		#@feed_items = @user.feed
 		# IF USER.ROLE == ADMIN 
 			@feedall_items = @user.feedall
 		# ELSE 
@@ -24,6 +22,5 @@ class DashboardController < ApplicationController
 		else
 			@uploads = @user.uploads(params[:id])
 		end
-		#@feed_items = @user.feed.(params[:id])
 	end
 end

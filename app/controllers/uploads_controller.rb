@@ -10,7 +10,6 @@ class UploadsController < ApplicationController
     else
       @feed_items = []
       redirect_to root_url
-      #flash[:notice] = "That was not a document, try again!"
 
     end
 

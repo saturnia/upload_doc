@@ -1,7 +1,7 @@
 UploadDoc::Application.routes.draw do
   get "uploads/new"
 
-  #get "upload/new"
+
 
   get "upload/destroy"
   get "users/create" 
@@ -9,8 +9,6 @@ UploadDoc::Application.routes.draw do
   get "uploads/create"
 
   get "uploads/destroy"
-  #resources :uploads, only: [:create, :destroy]
-  #resource: uploads, only: [:create, :destroy]
   get 'users/show'
   get "dashboard/index"
   get 'dashboard/show'
@@ -23,18 +21,8 @@ UploadDoc::Application.routes.draw do
   end
   resources :users
 
-  #devise_for :uploads
-
   resources :dashboard#, only: [:show, :index]
   resources :uploads, only: [:create, :destroy]
-
-  #devise_scope :user do
-  #  root to: "devise/sessions#new"
-  #end
-  
-  #root to: 'sessions#index'
-
-  #root to: "devise/sessions#new"
 
   root to: 'static_pages#home'
   #root to: 'my/users#login'
