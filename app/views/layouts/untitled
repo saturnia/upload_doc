@@ -1,0 +1,15 @@
+<form>
+	<fieldset>
+		<legend>Upload a document</legend>
+		<%= form_for @uploads, :html => { :multipart => true } do |f| %>
+			<p>
+				<%= f.file_field :document %>
+			</p>
+			<p>
+				<%= f.label :tag_list, "Tags (seperated by commas)" %>
+				<%= f.text_field :tag_list %>
+			</p>
+			<p><%= f.submit "Submit", class: "btn-info" %></p>
+		<% end %>
+	</fieldset>
+</form>

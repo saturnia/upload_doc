@@ -1,3 +1,5 @@
+<div class="upladdare">
+<caption>Upload a document</caption>
 <%= form_for @uploads, :html => { :multipart => true } do |f| %>
 	<p>
 		<%= f.file_field :document %>
@@ -6,5 +8,6 @@
 		<%= f.label :tag_list, "Tags (seperated by commas)" %>
 		<%= f.text_field :tag_list %>
 	</p>
-	<p><%= f.submit "Submit" %></p>
+	<p><%= f.submit "Submit", class: "btn btn-info" %></p>
 <% end %>
+</div>

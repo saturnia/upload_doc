@@ -39,10 +39,6 @@ class User < ActiveRecord::Base
   #def role?(role)
   #  return !!self.roles.find_by_name(role.to_s.camlize)
   #end
-  def feed
-    Upload.where("user_id = ?", id)
-  end
-
   def feedall
       Upload.all
   end

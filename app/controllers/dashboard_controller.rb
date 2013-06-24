@@ -6,7 +6,7 @@ class DashboardController < ApplicationController
 		@user = current_user
 		#@uploads = @user.uploads.new
 		@uploads = @user.uploads.new
-		@feed_items = @user.feed
+		#@feed_items = @user.feed
 		# IF USER.ROLE == ADMIN 
 			@feedall_items = @user.feedall
 		# ELSE 
