@@ -14,7 +14,7 @@
 
 	<% if can? [:delete, :update], @user %>
 
-		<div class="span4">
+		<div class="span4 pull-right">
 			<caption class="titlar">All Users | <% if can? :manage, @user %>
 			<%= link_to "Create new user", users_create_path %>
 		<% end %></caption>

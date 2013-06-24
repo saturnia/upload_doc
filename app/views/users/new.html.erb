@@ -1,7 +1,7 @@
 <%= provide(:title, 'Create user') %>
 
 <h1>Create user</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+
 
 <%= form_for @user do |u| %>
 
@@ -17,5 +17,5 @@
   <div><%= u.label :password_confirmation %><br />
   <%= u.password_field :password_confirmation %></div>
 
-  <div><%= u.submit "Create User" %></div>
+  <div><%= u.submit "Create User", class: "btn btn-info"%></div>
 <% end %>
