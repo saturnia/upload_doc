@@ -1,17 +1,11 @@
-<p><%= @user.name %>
-<%= @user.email %></p>
-
-<h2>Welcome to you dashboard</h2> 
-<h2><%= current_user.name %></h2>
+ <h2>Dashboard of <%= current_user.name %></h2>
 <div class="row">
 	<div class="span6 offset3">
-		<% if @user.uploads.any? %>
-			<p>Documents (<%= @user.uploads.count %>)</p>
 			<ol class="documents">
 				<%= render @uploads %>
 			</ol>
 			
-		<% end %>
+
 
 	</div>
 	

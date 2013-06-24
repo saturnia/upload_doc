@@ -15,10 +15,10 @@ class DashboardController < ApplicationController
 	end
 
 	def show
-		@taggar = Upload.tagged_with(params[:search])
+		#@taggar = Upload.tagged_with(params[:search])
 		@user = current_user
 		if params[:tag]
-			@uploads = @user.uploads.tagged_with(params[:tag])
+			@uploads = Upload.tagged_with(params[:tag])
 		else
 			@uploads = @user.uploads(params[:id])
 		end
