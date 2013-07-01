@@ -5,13 +5,12 @@ describe "UserPages" do
 	subject { page }
 
 	describe "profile pagefor role = user" do
-		let(:user) { FactoryGirl.create(:user) }
-		before { sign_in user }
-		before { visit dashboard_index_path(user) }
+		let(:bum) { FactoryGirl.create(:bum) }
+		before { sign_in bum }
+		before { visit dashboard_index_path(bum) }
 
-		it { should have_selector('h2', text: user.name) }
+		it { should have_selector('h2', text: bum.name) }
 		it { should have_selector('title', 	text: "UploadDoc") }
-		#it { should_not have_selector('h1', text: "All users") }
 	end
 
 	describe "profile page for role = 'admin'" do
