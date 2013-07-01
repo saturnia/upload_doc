@@ -12,21 +12,17 @@ FactoryGirl.define do
 		end
 	end
 
-	factory :attachment do
-		item File.new(Rails.root + 'rails.png')
-	end	
-end
-
-FactoryGirl.define do
-	factory :bum do
+	factory :bum, class: User do
 		name		"Bum"
 		email		"bum@bum.com"
 		password 	"foobar"
 		password_confirmation "foobar"
 		role	"user"
-
-		factory :admin do
-			admin false
-		end
 	end
+
+	factory :attachment do
+		item File.new(Rails.root + 'rails.png')
+	end	
 end
+
+
