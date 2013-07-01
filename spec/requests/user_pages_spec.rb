@@ -21,15 +21,17 @@ describe "UserPages" do
 
 		it { should have_selector('h2', text: user.name) }
 		it { should have_selector('title', text: "UploadDoc") }
-		it { should have_selector('h1', text: "All users") }
+		it { should have_selector('caption', text: "All Users") }
 		it { should have_link('Create new user', href: users_create_path) }
 	end
 
 
  	describe "sign_up" do
-		before { visit new_user_registration_path }
+ 		let(:user) { FactoryGirl.create(:user) }
+ 		before { sign_in user }
+		before { visit users_create_path }
 
-		let(:submit) { "Sign up" }
+		let(:submit) { "Create User" }
 
 		describe "with invalid information" do
 			it "should not create a user" do

@@ -10,7 +10,6 @@ describe "StaticPages" do
 
 		# Nedan följer två enkla test som garanterar att 
 		# inget fel sker med ex. routes och att dessa verkligen leder till framsidan.
-		it { should have_selector('h1', 	text: 'Home') }
 		it { should have_selector('title', 	text: full_title('')) }
 
 

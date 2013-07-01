@@ -1,18 +1,10 @@
 UploadDoc::Application.routes.draw do
-  get "uploads/new"
 
-
-
-  get "upload/destroy"
   get "users/create" 
-  get "users/edit"
-  get "uploads/create"
-
-  get "uploads/destroy"
   get 'users/show'
-  get "dashboard/index"
-  get 'dashboard/show'
+  get "users/edit"
 
+  
   get 'tags/:tag', to: 'dashboard#show', as: :tag
   devise_for :users, :path_prefix => 'my', :skip => [:registrations]
   as :user do
@@ -21,7 +13,7 @@ UploadDoc::Application.routes.draw do
   end
   resources :users
 
-  resources :dashboard#, only: [:show, :index]
+  resources :dashboard, only: [:show, :index]
   resources :uploads, only: [:create, :destroy]
 
   root to: 'static_pages#home'
