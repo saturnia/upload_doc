@@ -3,7 +3,6 @@ UploadDoc::Application.routes.draw do
   get "users/create" 
   get 'users/show'
   get "users/edit"
-
   
   get 'tags/:tag', to: 'dashboard#show', as: :tag
   devise_for :users, :path_prefix => 'my', :skip => [:registrations]

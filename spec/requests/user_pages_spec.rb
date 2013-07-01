@@ -4,14 +4,7 @@ describe "UserPages" do
 
 	subject { page }
 
-	describe "profile pagefor role = user" do
-		let(:bum) { FactoryGirl.create(:bum) }
-		before { sign_in bum }
-		before { visit dashboard_index_path(bum) }
-
-		it { should have_selector('h2', text: bum.name) }
-		it { should have_selector('title', 	text: "UploadDoc") }
-	end
+	
 
 	describe "profile page for role = 'admin'" do
 		let(:user) { FactoryGirl.create(:user) }
@@ -24,8 +17,20 @@ describe "UserPages" do
 		it { should have_link('Create new user', href: users_create_path) }
 	end
 
+	describe "profile page for role = 'user'" do
+		let(:bum) { FactoryGirl.create(:bum) }
+		before { sign_in bum }
+		before { visit dashboard_index_path(bum) }
 
- 	describe "sign_up" do
+		it { should have_selector('h2', text: bum.name) }
+		it { should have_selector('title', 	text: "UploadDoc") }
+		# Profile page for a 'user' should not show 'admin' elements on page
+		it { should_not have_selector('Create new user', href: users_create_path) }
+
+	end
+
+
+ 	describe "create user" do
  		let(:user) { FactoryGirl.create(:user) }
  		before { sign_in user }
 		before { visit users_create_path }
@@ -59,7 +64,6 @@ describe "UserPages" do
 
 		describe "page" do
 			it { should have_selector('h2', text: "Edit User") }
-			it { should have_selector('h3', text: "Cancel my account") }
 		end
 
 		describe "with invalid information" do

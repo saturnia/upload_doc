@@ -1,21 +1,25 @@
 <%= provide(:title, 'Create user') %>
 
-<h1>Create user</h1>
+<h2>Create user</h2>
 
+<div class="row">
+	<div class="span6 offset5">
 
-<%= form_for @user do |u| %>
+		<%= form_for @user do |u| %>
 
-  <div><%= u.label :name %><br />
-  <%= u.text_field :name %></div>
-  
-  <div><%= u.label :email %><br />
-  <%= u.email_field :email, :autofocus => true %></div>
+		  <div><%= u.label :name %><br />
+		  <%= u.text_field :name %></div>
+		  
+		  <div><%= u.label :email %><br />
+		  <%= u.email_field :email, :autofocus => true %></div>
 
-  <div><%= u.label :password %><br />
-  <%= u.password_field :password %></div>
+		  <div><%= u.label :password %><br />
+		  <%= u.password_field :password %></div>
 
-  <div><%= u.label :password_confirmation %><br />
-  <%= u.password_field :password_confirmation %></div>
+		  <div><%= u.label :password_confirmation %><br />
+		  <%= u.password_field :password_confirmation %></div><br />
 
-  <div><%= u.submit "Create User", class: "btn btn-info"%></div>
-<% end %>
+		  <div><%= u.submit "Create User", class: "btn btn-info"%></div>
+		<% end %>
+	</div>
+</div>

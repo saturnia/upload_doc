@@ -20,7 +20,7 @@ FactoryGirl.define do
 		role	"user"
 	end
 
-	factory :attachment do
+	factory :attachment, class: Upload do
 		item File.new(Rails.root + 'rails.png')
 	end	
 end
