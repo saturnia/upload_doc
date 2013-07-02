@@ -10,10 +10,6 @@ class UsersController < ApplicationController
 		@user = User.new(params[:user])
 	end
 
-	def new
-		@user = User.new(params[:user])
-	end
-
 	def create
 		@user = User.new(params[:user])
 		authorize! :create, @user

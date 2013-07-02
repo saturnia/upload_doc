@@ -1,6 +1,13 @@
 <% if @feedall_items.any? %>
 	<table class="table table-striped">
 		<caption class="titlar">Documents (<%= @feedall_items.count %>)</caption>
+				<thead>
+				  <tr>
+				    <th>Filename</th>
+				    <th>Time</th>
+				    <th>Name</th>
+				  </tr>
+				</thead> 
 		<%= render partial: 'shared/feedall_item', collection: @feedall_items %>
 	</table>
 <% end %>

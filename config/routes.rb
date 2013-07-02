@@ -14,7 +14,8 @@ UploadDoc::Application.routes.draw do
 
   resources :dashboard, only: [:show, :index]
   resources :uploads, only: [:create, :destroy]
-
+  get 'uploads/destroy'
+  
   root to: 'static_pages#home'
   #root to: 'my/users#login'
   # The priority is based upon order of creation:
