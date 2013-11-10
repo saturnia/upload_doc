@@ -27,12 +27,12 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :role, :name, :email, :password, :password_confirmation, :remember_me
+  attr_accessible :user_id, :role, :name, :email, :password, :password_confirmation, :remember_me
 
   has_many :uploads, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 50 } 
-
+  #validates :user_id, presence: true
   default_scope order: 'users.created_at DESC'
 
   #has_and_belongs_to_many :roles
@@ -40,6 +40,12 @@ class User < ActiveRecord::Base
   #  return !!self.roles.find_by_name(role.to_s.camlize)
   #end
   def feedall
+   #if User.where(":role = 'admin'", role: admin)
       Upload.all
+   # else
+      #Upload.where("protected = false", protected: false)
+      #Upload.where("protected = false OR user_id = :user_id", protected: false)
+   #   Upload.where("protected = false OR user_id = :user_id", protected: false, user_id)
+   # end
   end
 end

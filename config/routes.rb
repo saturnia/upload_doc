@@ -5,6 +5,8 @@ UploadDoc::Application.routes.draw do
   get "users/edit"
   
   get 'tags/:tag', to: 'dashboard#show', as: :tag
+  
+  # Restricting devise and enabling overriding of its controller.
   devise_for :users, :path_prefix => 'my', :skip => [:registrations]
   as :user do
     get 'my/users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'

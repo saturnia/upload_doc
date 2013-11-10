@@ -5,11 +5,9 @@ class DashboardController < ApplicationController
 	def index
 		@user = current_user
 		@uploads = @user.uploads.new
-		# IF USER.ROLE == ADMIN 
-			@feedall_items = @user.feedall
-		# ELSE 
+		@feedall_items = @user.feedall
+		#@user_id = Upload.user_id
 		# @FEEDALL_ITEMS  = @USER.FEEDALL.WHERE(PROTECTED: == FALSE) OR @USER.FEEDALL.USER_ID == ID
-
 		@users = (current_user.blank? ? User.all : User.find(:all, :conditions => ["id != ?", current_user.id]))
 
 	end
@@ -22,4 +20,10 @@ class DashboardController < ApplicationController
 			@uploads = @user.uploads(params[:id])
 		end
 	end
+
+	def toggle
+		@upload = Upload.find(params[:id])
+		@upload.toggle!(:protected)
+	end
+
 end
